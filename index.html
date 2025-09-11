@@ -12,29 +12,51 @@
     html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);
       font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans";}
     .wrap{max-width:1040px;margin:0 auto;padding:18px 14px;}
-    .hero{position:relative; display:grid; place-items:center; min-height:60vh; border-radius:var(--radius);
+
+    .hero{
+      position:relative; display:grid; place-items:center;
+      min-height:60vh; border-radius:var(--radius);
       background:
         radial-gradient(1200px 600px at 50% 0%, #EAF3FF 0%, transparent 55%),
         radial-gradient(900px 540px at 0% 100%,  #F4FFF6 0%, transparent 55%),
         radial-gradient(900px 540px at 100% 100%,#FFF1F7 0%, transparent 55%);
-      overflow:hidden; touch-action:manipulation;}
+      overflow:hidden; touch-action:manipulation;
+    }
     canvas#waves{position:absolute; inset:0; width:100%; height:100%; display:block;}
-    .voicebar{position:absolute; top:14px; right:14px; z-index:5; display:flex; align-items:center; gap:6px; background:var(--panel);
-      border:1px solid #E8ECF6; border-radius:999px; padding:8px 10px; box-shadow:var(--shadow);}
+
+    .voicebar{
+      position:absolute; top:14px; right:14px; z-index:5;
+      display:flex; align-items:center; gap:6px; background:var(--panel);
+      border:1px solid #E8ECF6; border-radius:999px; padding:8px 10px; box-shadow:var(--shadow);
+    }
     .voicebar button{border:0;background:#fff;border-radius:999px;padding:6px 10px;box-shadow:var(--shadow);cursor:pointer}
     .voice-name{font-weight:700;font-size:13px}
     @media (max-width:640px){ .voicebar{left:50%; right:auto; transform:translateX(-50%);} }
+
     .tapOverlay{position:absolute; inset:0; cursor:pointer; z-index:4;}
-    .orb-wrap{ width:clamp(200px, 52vw, 360px); aspect-ratio:1/1; z-index:2; filter:drop-shadow(0 15px 40px rgba(0,0,0,.08)); }
+
+    .orb-wrap{ width:clamp(200px, 52vw, 360px); aspect-ratio:1/1; z-index:2;
+      filter:drop-shadow(0 15px 40px rgba(0,0,0,.08)); }
     canvas#orb{width:100%;height:100%;display:block;border-radius:50%;}
+
     .mini-orb{ width:48px; height:48px; border-radius:50%; overflow:hidden; }
     canvas#miniOrb{ width:48px; height:48px; }
+
     .chips{position:absolute; bottom:14px; left:0; right:0; z-index:3; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; padding:0 10px;}
-    .chip{background:var(--panel); border:1px solid #E8ECF6; color:var(--muted); padding:8px 12px; border-radius:999px; font-size:12px; box-shadow:var(--shadow); white-space:nowrap;}
+    .chip{background:var(--panel); border:1px solid #E8ECF6; color:var(--muted);
+      padding:8px 12px; border-radius:999px; font-size:12px; box-shadow:var(--shadow); white-space:nowrap;}
     .live{position:absolute; left:50%; transform:translateX(-50%); bottom:96px; z-index:3;}
-    .fab{position:fixed; right:16px; bottom:16px; z-index:50; background:#fff; color:var(--ink); border:1px solid #E7EBF5; box-shadow:var(--shadow); border-radius:999px; padding:12px 16px; font-weight:700; cursor:pointer;}
+
+    .fab{position:fixed; right:16px; bottom:16px; z-index:50; background:#fff; color:var(--ink);
+      border:1px solid #E7EBF5; box-shadow:var(--shadow); border-radius:999px; padding:12px 16px; font-weight:700; cursor:pointer;}
     @media (max-width:640px){ .fab{left:50%; right:auto; transform:translateX(-50%);} }
-    .drawer{ position:fixed; left:0; right:0; bottom:-100%; z-index:60; background:var(--panel); border-top-left-radius:18px; border-top-right-radius:18px; border:1px solid #E8ECF6; box-shadow:0 -12px 32px rgba(0,0,0,.08); transition:bottom .35s ease; max-height:92vh; display:flex; flex-direction:column; }
+
+    .drawer{
+      position:fixed; left:0; right:0; bottom:-100%; z-index:60; background:var(--panel);
+      border-top-left-radius:18px; border-top-right-radius:18px; border:1px solid #E8ECF6;
+      box-shadow:0 -12px 32px rgba(0,0,0,.08); transition:bottom .35s ease;
+      max-height:92vh; display:flex; flex-direction:column;
+    }
     .drawer.open{bottom:0;}
     .drawer-header{padding:10px 12px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #EEF1F8;}
     .drawer-title{font-weight:800; display:flex; align-items:center; gap:10px;}
@@ -52,8 +74,16 @@
     .btn{border:0; border-radius:999px; padding:12px 16px; background:#fff; box-shadow:var(--shadow); font-weight:600;}
     .btn.ghost{box-shadow:none;border:1px solid #E7EBF5;background:transparent}
     .mic-mini{border:1px solid #E7EBF5; background:#fff;}
-    @media (max-width:640px){ .wrap{padding:14px 10px;} .hero{min-height:56vh;} .grid{grid-template-columns:1fr;} }
-    @media (min-width:1000px){ .drawer{ left:50%; transform:translateX(-50%); width:min(900px, 94vw); border-radius:18px; } .drawer.open{ bottom:24px; } }
+
+    @media (max-width:640px){
+      .wrap{padding:14px 10px;}
+      .hero{min-height:56vh;}
+      .grid{grid-template-columns:1fr;}
+    }
+    @media (min-width:1000px){
+      .drawer{ left:50%; transform:translateX(-50%); width:min(900px, 94vw); border-radius:18px; }
+      .drawer.open{ bottom:24px; }
+    }
   </style>
 </head>
 <body>
@@ -113,39 +143,76 @@
   </div>
 
 <script>
-/* ========== SET THESE TWO VALUES ==========
-   API_BASE: your Apps Script /exec URL
-   TTS_URL:  your Cloud Function /tts URL (leave '' until you deploy step 3)
-=========================================== */
-const API_BASE = 'https://script.google.com/macros/s/AKfycbwsb4m92hsN2vOqDQjE2cyVMqrRSJrKa-nEoFbQYEpO2MvBpr9PKAXZe0BpUMJj-Bpo/exec';
-const TTS_URL  = 'https://us-central1-dark-form-462709-j2.cloudfunctions.net/server';  // e.g. 'https://us-central1-XXX.cloudfunctions.net/server/tts'
-
-/* ======== KNOBS (mic & VAD & behaviour) ======== */
-const MIC_NOISE = 0.05;      // raise if room is noisy
-const MIC_GAIN  = 8;         // lower if orb jumps too much
-const MIC_SMOOTH= 0.16;      // raise to slow animation response
-const LISTEN_MAX_MS = 8000;  // hard stop after 8s
+/* ======== TUNABLE KNOBS (animation & VAD) ======== */
+const MIC_NOISE = 0.05;               // raise if room is noisy
+const MIC_GAIN  = 8;                  // lower if orb jumps too much
+const MIC_SMOOTH= 0.16;               // raise to slow the animation response
+const LISTEN_MAX_MS = 10000;          // hard stop after 10s
 const SILENCE_START_THRESHOLD = 0.11; // treat above this as “voice”
-const SILENCE_HOLD_MS = 900; // stop after 0.9s of silence
+const SILENCE_HOLD_MS = 1200;         // stop after 1.2s of silence
 
-const GREET_ON_FIRST_TAP = true;  // greet on first tap, then auto-listen
-const USE_SERVER_TTS = false;     // set true after step 3 (Neural2)
+// Greeting + flow
+const GREET_ON_FIRST_TAP = true;      // greet on first tap, then auto-listen
+const USE_SERVER_TTS     = true;      // leave true to use Neural2 via Cloud Function
 
-/* ======== JSONP helper (CORS-proof) ======== */
-function jsonp(url, params={}, timeoutMs=15000){
-  return new Promise((resolve,reject)=>{
-    const cb='cb_'+Math.random().toString(36).slice(2);
-    window[cb]=data=>{ cleanup(); resolve(data); };
-    const q=new URLSearchParams({...params, callback:cb}).toString();
-    const s=document.createElement('script');
-    let done=false;
-    function cleanup(){ if(done) return; done=true; delete window[cb]; s.remove(); clearTimeout(t); }
-    s.src = url + (url.includes('?')?'&':'?') + q;
-    s.onerror=()=>{ cleanup(); reject(new Error('Network error')); };
-    document.body.appendChild(s);
-    const t=setTimeout(()=>{ cleanup(); reject(new Error('Timeout')); }, timeoutMs);
-  });
+/* ======== Apps Script bridge (JSONP; works from GitHub Pages) ======== */
+const API_BASE = 'https://script.google.com/macros/s/AKfycbwsb4m92hsN2vOqDQjE2cyVMqrRSJrKa-nEoFbQYEpO2MvBpr9PKAXZe0BpUMJj-Bpo/exec';
+
+/** JSONP helper: appsGet('nlp', { q:'check cowley...' }, cb) */
+function appsGet(api, params = {}, cb, onError){
+  const cbName = '__cb_' + Math.random().toString(36).slice(2);
+  const s = document.createElement('script');
+  const q = new URLSearchParams({ api, ...params, callback: cbName });
+  const url = API_BASE + '?' + q.toString();
+
+  let done = false;
+  const cleanup = () => { if (s.parentNode) s.parentNode.removeChild(s); try{ delete window[cbName]; }catch(e){} };
+
+  window[cbName] = (data) => {
+    if (done) return; done = true; cleanup();
+    try { cb && cb(data); } catch(e){ console.error(e); }
+  };
+
+  s.src = url;
+  s.onerror = () => { if (done) return; done = true; cleanup(); onError && onError(new Error('JSONP load error')); };
+  document.head.appendChild(s);
+
+  // safety timeout
+  setTimeout(() => {
+    if (done) return; done = true; cleanup();
+    onError && onError(new Error('Request timed out'));
+  }, 20000);
 }
+
+/** tiny wrapper to keep old call sites working */
+const AppsScript = {
+  call(method, args, cb){
+    if (method === 'apiMeta')       return appsGet('meta', {}, cb, ()=>cb && cb(null));
+    if (method === 'apiCheckToday') return appsGet('checkToday', {}, cb, ()=>cb && cb(null));
+    if (method === 'apiNlpQuery')   return appsGet('nlp', { q: String(args || '') }, cb, ()=>cb && cb(null));
+    if (method === 'apiTtsSynthesize'){ cb && cb({ audio:null }); return; }
+    cb && cb(null);
+  }
+};
+
+/* ======== Mic status helper (user feedback) ======== */
+const chipMic = document.getElementById('chipMic');
+async function refreshMicStatus(){
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    chipMic.textContent = 'Mic: unsupported';
+    return;
+  }
+  if (navigator.permissions && navigator.permissions.query){
+    try{
+      const p = await navigator.permissions.query({name:'microphone'});
+      chipMic.textContent = 'Mic: ' + p.state; // 'granted' | 'denied' | 'prompt'
+      p.onchange = ()=> chipMic.textContent = 'Mic: ' + p.state;
+      return;
+    }catch(e){}
+  }
+  chipMic.textContent = 'Mic: ready';
+}
+refreshMicStatus();
 
 /* ======== Neon waves (speak-only) ======== */
 const waves = document.getElementById('waves');
@@ -177,14 +244,28 @@ const orb=document.getElementById('orb'), ctx=orb.getContext('2d',{alpha:true});
 const miniOrb=document.getElementById('miniOrb'), mctx=miniOrb.getContext('2d',{alpha:true});
 let t=0, micLevel=0, speakLevel=0, mode='idle';
 const chipState=document.getElementById('chipState'), liveCap=document.getElementById('liveCaption');
-const drawer=document.getElementById('drawer'), openDrawer=document.getElementById('openDrawer'), closeDrawer=document.getElementById('closeDrawer');
-openDrawer.onclick=()=>drawer.classList.add('open'); closeDrawer.onclick=()=>drawer.classList.remove('open');
-function setMode(m){ mode=m; chipState.textContent=(m==='idle')?'Idle':(m==='listening'?'Listening…':'Speaking…'); waveTarget=(m==='speaking')?0.55:0; drawerMic.textContent=(m==='listening')?'🛑 Tap when done':'🎙️ Tap to speak'; }
-function drawCloud(c,W,H,energy,tick){ const cx=W/2, cy=H/2, baseR=Math.min(W,H)*0.325; const breath=0.010*Math.sin(tick*0.45), R=baseR*(1+breath+energy*0.10);
+const drawerMic=document.getElementById('drawerMic');
+function setMode(m){
+  mode=m; chipState.textContent=(m==='idle')?'Idle':(m==='listening'?'Listening…':'Speaking…');
+  waveTarget=(m==='speaking')?0.55:0;
+  drawerMic.textContent=(m==='listening')?'🛑 Tap when done':'🎙️ Tap to speak';
+}
+function drawCloud(c,W,H,energy,tick){
+  const cx=W/2, cy=H/2, baseR=Math.min(W,H)*0.325;
+  const breath=0.010*Math.sin(tick*0.45), R=baseR*(1+breath+energy*0.10);
   const k1=5,k2=2,amp1=0.10,amp2=0.035,phase=tick*0.40; const n=36, pts=[];
-  for(let i=0;i<n;i++){ const a=i/n*Math.PI*2; const lobe=amp1*Math.cos(k1*a+phase)+amp2*Math.cos(k2*a-phase*0.7); const reactive=energy*0.05*Math.cos(4*a + tick*0.9); const rad=R*(1+lobe+reactive); pts.push({x:cx+rad*Math.cos(a), y:cy+rad*Math.sin(a)}); }
+  for(let i=0;i<n;i++){ const a=i/n*Math.PI*2;
+    const lobe=amp1*Math.cos(k1*a+phase)+amp2*Math.cos(k2*a-phase*0.7);
+    const reactive=energy*0.05*Math.cos(4*a + tick*0.9);
+    const rad=R*(1+lobe+reactive);
+    pts.push({x:cx+rad*Math.cos(a), y:cy+rad*Math.sin(a)});
+  }
   c.clearRect(0,0,W,H); c.beginPath();
-  for(let i=0;i<n;i++){ const p0=pts[(i-1+n)%n], p1=pts[i], p2=pts[(i+1)%n], p3=pts[(i+2)%n]; const cp1x=p1.x+(p2.x-p0.x)/6, cp1y=p1.y+(p2.y-p0.y)/6, cp2x=p2.x-(p3.x-p1.x)/6, cp2y=p2.y-(p3.y-p1.y)/6; if(i===0) c.moveTo(p1.x,p1.y); c.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,p2.x,p2.y); }
+  for(let i=0;i<n;i++){
+    const p0=pts[(i-1+n)%n], p1=pts[i], p2=pts[(i+1)%n], p3=pts[(i+2)%n];
+    const cp1x=p1.x+(p2.x-p0.x)/6, cp1y=p1.y+(p2.y-p0.y)/6, cp2x=p2.x-(p3.x-p1.x)/6, cp2y=p2.y-(p3.y-p1.y)/6;
+    if(i===0) c.moveTo(p1.x,p1.y); c.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,p2.x,p2.y);
+  }
   c.closePath();
   const g=c.createRadialGradient(cx-12,cy-20,R*0.12,cx,cy,R*1.03);
   g.addColorStop(0,'#E8F3FF'); g.addColorStop(0.45,'#EFFEFA'); g.addColorStop(0.82,'#FFFFFF'); g.addColorStop(1,'rgba(255,255,255,0.96)');
@@ -193,7 +274,7 @@ function drawCloud(c,W,H,energy,tick){ const cx=W/2, cy=H/2, baseR=Math.min(W,H)
 function animate(){ const energy=Math.min(1, micLevel + speakLevel*0.9); drawCloud(ctx, orb.width, orb.height, energy, t); drawCloud(mctx, miniOrb.width, miniOrb.height, energy, t); t+=0.016; requestAnimationFrame(animate); }
 requestAnimationFrame(animate);
 
-/* ======== Voice personas ======== */
+/* ======== Voice personas & picker ======== */
 const voiceNameEl=document.getElementById('voiceName');
 const prevVoiceBtn=document.getElementById('prevVoice'), nextVoiceBtn=document.getElementById('nextVoice');
 const previewVoiceBtn=document.getElementById('previewVoice'), saveVoiceBtn=document.getElementById('saveVoice');
@@ -208,69 +289,98 @@ const Personas=[
 ];
 let voices=[], personaIndex=0, savedPersonaKey=localStorage.getItem('voice.persona')||'nova';
 if ('speechSynthesis' in window){
-  const loadVoices=()=>{ const v=speechSynthesis.getVoices(); if(!v.length){ setTimeout(loadVoices, 250); return; } voices=v; personaIndex=Math.max(0, Personas.findIndex(p=>p.key===savedPersonaKey)); updateVoiceUI(); };
+  const loadVoices=()=>{
+    const v=speechSynthesis.getVoices();
+    if(!v.length){ setTimeout(loadVoices, 250); return; }
+    voices=v; personaIndex=Math.max(0, Personas.findIndex(p=>p.key===savedPersonaKey));
+    updateVoiceUI();
+  };
   speechSynthesis.onvoiceschanged = loadVoices; loadVoices();
 }
-function pickVoiceFor(persona){ let v = voices.find(v=>/google (uk|us) english/i.test(v.name) && /en/i.test(v.lang) && persona.find.test(v.name)); if (!v) v = voices.find(v=>/google (uk|us) english/i.test(v.name) && /en/i.test(v.lang)); return v || voices.find(v=>/en(-|_)?/i.test(v.lang)) || voices[0]; }
+function pickVoiceFor(persona){
+  let v = voices.find(v=>/google (uk|us) english/i.test(v.name) && /en/i.test(v.lang) && persona.find.test(v.name));
+  if (!v) v = voices.find(v=>/google (uk|us) english/i.test(v.name) && /en/i.test(v.lang));
+  return v || voices.find(v=>/en(-|_)?/i.test(v.lang)) || voices[0];
+}
 function currentPersona(){ return Personas[personaIndex]; }
-function updateVoiceUI(){ voiceNameEl.textContent = currentPersona().label; saveVoiceBtn.style.display = (currentPersona().key === savedPersonaKey) ? 'none' : 'inline-block'; }
+function updateVoiceUI(){
+  voiceNameEl.textContent = currentPersona().label;
+  saveVoiceBtn.style.display = (currentPersona().key === savedPersonaKey) ? 'none' : 'inline-block';
+}
 prevVoiceBtn.onclick = ()=>{ personaIndex=(personaIndex-1+Personas.length)%Personas.length; updateVoiceUI(); };
 nextVoiceBtn.onclick = ()=>{ personaIndex=(personaIndex+1)%Personas.length; updateVoiceUI(); };
-previewVoiceBtn.onclick = ()=>{ speakWithPersona(currentPersona().line, currentPersona(), true); };
+previewVoiceBtn.onclick = ()=>{ speak("This is just a quick preview of the voice."); };
 saveVoiceBtn.onclick = ()=>{ savedPersonaKey=currentPersona().key; localStorage.setItem('voice.persona', savedPersonaKey); updateVoiceUI(); liveCap.textContent=`Saved voice: ${currentPersona().label}`; };
 
-/* ======== Speak (Neural2 via CF if configured, else browser) ======== */
+/* ======== Neural2 TTS via Cloud Function + browser fallback ======== */
+const TTS_BASE = 'https://us-central1-dark-form-462709-j2.cloudfunctions.net/server';
+
 let speaking=false, currentAudio=null;
-function stopSpeaking(){ try{ speechSynthesis.cancel(); }catch(e){} try{ if (currentAudio){ currentAudio.pause(); currentAudio.src=''; } }catch(e){} currentAudio=null; speaking=false; speakLevel=0; setMode('idle'); }
+
+function stopSpeaking(){
+  try{ speechSynthesis.cancel(); }catch(e){}
+  try{ if (currentAudio){ currentAudio.pause(); currentAudio.src=''; } }catch(e){}
+  currentAudio=null; speaking=false; speakLevel=0; setMode('idle');
+}
+
+/** Call your Cloud Function: POST /tts { persona, text } -> { audio: base64mp3 } */
+async function ttsFetch(personaKey, text){
+  const res = await fetch(TTS_BASE + '/tts', {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json' },
+    body: JSON.stringify({ persona: personaKey, text })
+  });
+  if (!res.ok) throw new Error('TTS HTTP '+res.status);
+  return await res.json(); // { audio: "base64..." }
+}
+
+/** Play server MP3 and resolve when finished */
+function playB64AndWait(b64, transcript){
+  return new Promise((resolve) => {
+    stopSpeaking();
+    const audio = new Audio('data:audio/mp3;base64,' + b64);
+    currentAudio = audio;
+    audio.onplay = ()=>{ speaking=true; setMode('speaking'); pulseSpeak(); logTTS(transcript); liveCap.textContent='Agent: ' + transcript; };
+    audio.onended=()=>{ speaking=false; setMode('idle'); speakLevel=0; liveCap.textContent='Tap to speak'; currentAudio=null; resolve(); };
+    audio.onerror=()=>{ speaking=false; setMode('idle'); resolve(); };
+    audio.play().catch(()=>resolve());
+  });
+}
+
+/** Browser speechSynthesis fallback, resolves when end */
+function speakBrowserAndWait(text, persona){
+  return new Promise((resolve)=>{
+    if (!('speechSynthesis' in window)) return resolve();
+    const u=new SpeechSynthesisUtterance(text);
+    const v=pickVoiceFor(persona||currentPersona()); if (v) u.voice=v;
+    u.pitch=(persona||currentPersona()).pitch; u.rate=(persona||currentPersona()).rate;
+    u.onstart=()=>{ speaking=true; setMode('speaking'); pulseSpeak(); logTTS(text); liveCap.textContent='Agent: ' + text; };
+    u.onend=()=>{ speaking=false; setMode('idle'); speakLevel=0; liveCap.textContent='Tap to speak'; resolve(); };
+    try{ speechSynthesis.speak(u); }catch(e){ resolve(); }
+  });
+}
+
+/** Main speak() used everywhere; returns a Promise that resolves when finished */
 function speak(text){
-  const persona = Personas.find(p=>p.key===savedPersonaKey)||currentPersona();
-  if (USE_SERVER_TTS && TTS_URL){
-    fetch(TTS_URL + '?persona=' + encodeURIComponent(persona.key) + '&text=' + encodeURIComponent(text))
-      .then(r=>r.json()).then(res=>{ if (res && res.audio) playAudioB64(res.audio, text); else speakWithPersona(text, persona); })
-      .catch(()=> speakWithPersona(text, persona));
+  const persona = Personas.find(p=>p.key===savedPersonaKey) || currentPersona();
+  if (USE_SERVER_TTS){
+    return ttsFetch(persona.key, text)
+      .then(j => j && j.audio ? playB64AndWait(j.audio, text) : speakBrowserAndWait(text, persona))
+      .catch(()=> speakBrowserAndWait(text, persona));
   } else {
-    speakWithPersona(text, persona);
+    return speakBrowserAndWait(text, persona);
   }
 }
-function playAudioB64(b64, transcript){
-  stopSpeaking();
-  const audio = new Audio('data:audio/mp3;base64,' + b64);
-  currentAudio = audio;
-  audio.onplay = ()=>{ speaking=true; setMode('speaking'); pulseSpeak(); logTTS(transcript); liveCap.textContent='Agent: ' + transcript; };
-  audio.onended=()=>{ speaking=false; setMode('idle'); speakLevel=0; liveCap.textContent='Tap to speak'; currentAudio=null; };
-  audio.play().catch(()=>{ speakWithPersona(transcript, currentPersona()); });
-}
-function speakWithPersona(text, persona, isPreview=false){
-  stopSpeaking(); if (!('speechSynthesis' in window)) return;
-  const u=new SpeechSynthesisUtterance(text);
-  const v=pickVoiceFor(persona); if (v) u.voice=v; u.pitch=persona.pitch; u.rate=persona.rate;
-  u.onstart=()=>{ speaking=true; setMode('speaking'); pulseSpeak(); if(!isPreview){ logTTS(text); } liveCap.textContent='Agent: ' + text; };
-  u.onend=()=>{ speaking=false; setMode('idle'); speakLevel=0; if(!isPreview){ liveCap.textContent='Tap to speak'; } };
-  speechSynthesis.speak(u);
-}
+
 function pulseSpeak(){ if(!speaking) return; const now=performance.now()/1000; speakLevel=0.18+0.14*Math.sin(now*2.6); requestAnimationFrame(pulseSpeak); }
 
-/* ======== Mic permission + Listening (VAD) ======== */
-const chipMic = document.getElementById('chipMic');
-async function refreshMicStatus(){ if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ chipMic.textContent = 'Mic: unsupported'; return; }
-  if (navigator.permissions && navigator.permissions.query){ try{ const p=await navigator.permissions.query({name:'microphone'}); chipMic.textContent='Mic: '+p.state; p.onchange=()=> chipMic.textContent='Mic: '+p.state; return; }catch(e){} } chipMic.textContent='Mic: ready'; }
-refreshMicStatus();
-
-let recognition=null, audioCtx=null, analyser=null, micSrc=null, listening=false, streamRef=null;
-let listenStartedAt=0, lastLoudAt=0;
-const tapArea=document.getElementById('tap'), drawerMic=document.getElementById('drawerMic');
-let firstTapDone=false;
-tapArea.addEventListener('click', async ()=>{
-  if (speaking){ stopSpeaking(); startListening(); return; } // barge-in
-  if (!firstTapDone && GREET_ON_FIRST_TAP){ firstTapDone=true; await primeMicPermission(); greet(()=> startListening()); return; }
-  listening? stopListening() : startListening();
-});
-drawerMic.onclick=()=>{ if(speaking){ stopSpeaking(); } listening? stopListening() : startListening(); };
-
+/* ======== Ask for mic permission on first tap ======== */
 async function primeMicPermission(){
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return false;
   try{
-    const s = await navigator.mediaDevices.getUserMedia({ audio:{ noiseSuppression:true, echoCancellation:true, autoGainControl:true, channelCount:1 } });
+    const s = await navigator.mediaDevices.getUserMedia({
+      audio: { noiseSuppression:true, echoCancellation:true, autoGainControl:true, channelCount:1 }
+    });
     s.getTracks().forEach(t=>t.stop());
     chipMic.textContent = 'Mic: granted';
     return true;
@@ -280,15 +390,37 @@ async function primeMicPermission(){
     return false;
   }
 }
+
+/* ======== Listening with silence VAD ======== */
+let recognition=null, audioCtx=null, analyser=null, micSrc=null, listening=false, streamRef=null;
+let listenStartedAt=0, lastLoudAt=0;
+const tapArea=document.getElementById('tap');
+let firstTapDone=false;
+tapArea.addEventListener('click', async ()=>{
+  if (speaking){ stopSpeaking(); startListening(); return; }   // interrupt talking
+  if (!firstTapDone && GREET_ON_FIRST_TAP){
+    firstTapDone = true;
+    await primeMicPermission();
+    greet(()=> startListening());
+    return;
+  }
+  listening? stopListening() : startListening();
+});
+drawerMic.onclick=()=>{ if(speaking){ stopSpeaking(); } listening? stopListening() : startListening(); };
+
 function startListening(){
   if (listening) return;
+
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
     alert('Microphone not supported in this browser. Use the chat box or try Chrome.');
-    liveCap.textContent='Mic unsupported. Use chat.'; return;
+    liveCap.textContent='Mic unsupported. Use chat.';
+    return;
   }
+
   navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
-    stopSpeaking();
-    streamRef=stream; liveCap.textContent='Listening… tap when done';
+    stopSpeaking(); // ensure the agent isn’t talking
+    streamRef=stream;
+    liveCap.textContent='Listening… tap when done';
     audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
     if (audioCtx.state==='suspended') audioCtx.resume();
     micSrc = audioCtx.createMediaStreamSource(stream);
@@ -298,7 +430,9 @@ function startListening(){
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR){
       logBotCard('Speech recognition is not supported in this browser. Please use the text box or try Google Chrome.');
-      setMode('idle'); liveCap.textContent='Use chat (no speech in this browser)'; setTimeout(()=>{ stopListening(); }, 1200); return;
+      setMode('idle'); liveCap.textContent='Use chat (no speech in this browser)';
+      setTimeout(()=>{ stopListening(); }, 1200);
+      return;
     }
 
     recognition = new SR();
@@ -311,13 +445,18 @@ function startListening(){
       let s=''; for(let i=e.resultIndex;i<e.results.length;i++) s+=e.results[i][0].transcript+' ';
       liveCap.textContent='You: ' + s.trim();
       const isFinal = e.results[e.results.length-1].isFinal;
-      if (isFinal){ const finalTxt = s.trim(); logSTT(finalTxt); handleQuery(finalTxt); }
+      if (isFinal){
+        const finalTxt = s.trim();
+        logSTT(finalTxt);
+        handleQuery(finalTxt);
+      }
     };
     recognition.onerror = e => { console.warn('SR error', e.error); };
     recognition.onend = ()=>{ stopListening(); };
 
     try{ recognition.start(); }catch(e){ console.warn(e); }
 
+    // VAD loop
     meter(); vadLoop();
   }).catch(err=>{
     console.warn(err);
@@ -327,27 +466,45 @@ function startListening(){
     }
   });
 }
-function stopListening(){ if(!listening && !streamRef) { setMode('idle'); return; } listening=false; setMode('idle'); micLevel=0; liveCap.textContent='Tap to speak';
-  try{ recognition && recognition.stop && recognition.stop(); }catch(e){} try{ streamRef && streamRef.getTracks().forEach(t=>t.stop()); }catch(e){} streamRef=null; }
-function meter(){ const buf=new Float32Array(analyser.fftSize); (function loop(){ if(!listening) return;
-  analyser.getFloatTimeDomainData(buf);
-  let sum=0; for(let i=0;i<buf.length;i++) sum+=buf[i]*buf[i];
-  const rms=Math.sqrt(sum/buf.length);
-  const target = Math.max(0, Math.min(1, (rms-MIC_NOISE)*MIC_GAIN));
-  micLevel = micLevel*(1-MIC_SMOOTH) + target*MIC_SMOOTH;
-  if (micLevel > SILENCE_START_THRESHOLD) lastLoudAt = performance.now();
-  requestAnimationFrame(loop);
-})(); }
-function vadLoop(){ (function loop(){ if(!listening) return;
-  const now=performance.now();
-  const longSilent = (now - lastLoudAt) > SILENCE_HOLD_MS;
-  const tooLong = (now - listenStartedAt) > LISTEN_MAX_MS;
-  if (longSilent || tooLong){ try{ recognition && recognition.stop && recognition.stop(); }catch(e){} return; }
-  requestAnimationFrame(loop);
-})(); }
 
-/* ======== Drawer, chat, “Working…” ======== */
-const feed=document.getElementById('feed'), input=document.getElementById('text'), sendBtn=document.getElementById('send'), clearBtn=document.getElementById('clearChat'), tzChip=document.getElementById('chipTZ'), drawerMic=document.getElementById('drawerMic');
+function stopListening(){
+  if(!listening && !streamRef) { setMode('idle'); return; }
+  listening=false; setMode('idle'); micLevel=0; liveCap.textContent='Tap to speak';
+  try{ recognition && recognition.stop && recognition.stop(); }catch(e){}
+  try{ streamRef && streamRef.getTracks().forEach(t=>t.stop()); }catch(e){}
+  streamRef=null;
+}
+
+function meter(){
+  const buf=new Float32Array(analyser.fftSize);
+  (function loop(){ if(!listening) return;
+    analyser.getFloatTimeDomainData(buf);
+    let sum=0; for(let i=0;i<buf.length;i++) sum+=buf[i]*buf[i];
+    const rms=Math.sqrt(sum/buf.length);
+    const target = Math.max(0, Math.min(1, (rms-MIC_NOISE)*MIC_GAIN));
+    micLevel = micLevel*(1-MIC_SMOOTH) + target*MIC_SMOOTH;
+    if (micLevel > SILENCE_START_THRESHOLD) lastLoudAt = performance.now();
+    requestAnimationFrame(loop);
+  })();
+}
+function vadLoop(){
+  (function loop(){ if(!listening) return;
+    const now=performance.now();
+    const longSilent = (now - lastLoudAt) > SILENCE_HOLD_MS;
+    const tooLong = (now - listenStartedAt) > LISTEN_MAX_MS;
+    if (longSilent || tooLong){
+      try{ recognition && recognition.stop && recognition.stop(); }catch(e){}
+      return;
+    }
+    requestAnimationFrame(loop);
+  })();
+}
+
+/* ======== Drawer, chat, greet (auto-listen after speaking) ======== */
+const drawer=document.getElementById('drawer'), openDrawer=document.getElementById('openDrawer'), closeDrawer=document.getElementById('closeDrawer');
+openDrawer.onclick=()=>drawer.classList.add('open'); closeDrawer.onclick=()=>drawer.classList.remove('open');
+
+const feed=document.getElementById('feed'), input=document.getElementById('text'), sendBtn=document.getElementById('send'), clearBtn=document.getElementById('clearChat');
 sendBtn.onclick=()=>{ if(!input.value.trim()) return; const q=input.value.trim(); logSTT(q); handleQuery(q); input.value=''; };
 input.addEventListener('keydown',e=>{ if(e.key==='Enter') sendBtn.click(); });
 clearBtn.onclick=()=>{ if (confirm('Clear chat history?')) { localStorage.removeItem('chat.feed'); feed.innerHTML=''; } };
@@ -356,16 +513,19 @@ function logSTT(text){ push(`<div class="card"><b>You said</b><div class="muted"
 function logTTS(text){ push(`<div class="card"><b>Agent</b><div class="muted" style="margin-top:4px">${escapeHtml(text)}</div></div>`); }
 function logBotCard(msg){ push(`<div class="card"><b>Agent</b><div class="muted" style="margin-top:4px">${escapeHtml(msg)}</div></div>`); }
 
-jsonp(API_BASE, {api:'meta'}).then(m=>{ tzChip.textContent=`Timezone: ${m?.timezone||'Europe/London'}`; });
+const tzChip=document.getElementById('chipTZ');
+AppsScript.call('apiMeta', null, m=>{ tzChip.textContent=`Timezone: ${m?.timezone||'Europe/London'}`; });
 
-function greet(after){ const now=new Date();
+function greet(after){
+  const now=new Date();
   const lines=[
     "Hi! Tell me a location or form and I’ll look for any missed submissions.",
     "Hello! I can scan opening, closing, and temperature forms — just say the word.",
     "Hey there! Ask me for a location or form and I’ll check it."
   ];
   const line = `${lines[Math.floor(Math.random()*lines.length)]} It’s ${now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})} on ${now.toLocaleDateString([], {weekday:'long', month:'short', day:'numeric'})}. You can interrupt by speaking anytime.`;
-  logTTS(line); speak(line); if (after) setTimeout(()=>{ try{ after(); }catch(e){} }, 1000);
+  logTTS(line);
+  speak(line).then(()=>{ if (after) after(); }); // wait until TTS ends, then listen
 }
 
 /* ======== “Working…” card while we query ======== */
@@ -386,6 +546,7 @@ function handleQuery(text){
   const s=text.trim().toLowerCase();
   if (!s) return;
 
+  // small talk = instant reply
   if (/^(hi|hello|hey|yo|good\s*(morning|afternoon|evening))\b/.test(s) || /how are you/.test(s)){
     const opens=[
       "Hi! Want me to check today’s opening or temperature forms?",
@@ -403,11 +564,20 @@ function handleQuery(text){
   }
 
   const thinkId = showThinking('Scanning forms and responses…');
-  jsonp(API_BASE, { api:'nlp', q: text }).then(payload=>{
+
+  appsGet('nlp', { q:text }, (payload)=>{
     doneThinking(thinkId);
-    if (!payload){ const msg='Could not reach the server. Please reload and try again.'; logBotCard(msg); speak('Sorry, I could not reach the server.'); return; }
-    showPayload(payload); speak(payload.summaryLine || 'Done.');
-  }).catch(()=>{ doneThinking(thinkId); logBotCard('Network error.'); });
+    if (!payload){
+      const msg='Could not reach the server. Please reload and try again.';
+      logBotCard(msg); speak('Sorry, I could not reach the server.'); return;
+    }
+    showPayload(payload);
+    speak(payload.summaryLine || 'Done.');
+  }, (err)=>{
+    doneThinking(thinkId);
+    logBotCard('Server request failed. Check your Apps Script URL or network.');
+    speak('Sorry, my server request failed.');
+  });
 }
 
 function showPayload(payload){
@@ -421,8 +591,11 @@ function showPayload(payload){
   push(hdr);
 
   const missed=results.filter(r=>r.status==='missed' || r.status==='missed-by-staff');
-  if (missed.length){ push(`<div class="grid">${missed.map(r=>card(r,'❌ Missed')).join('')}</div>`); }
-  else { push(`<div class="card">✅ No missed slots in this range.</div>`); }
+  if (missed.length){
+    push(`<div class="grid">${missed.map(r=>card(r,'❌ Missed')).join('')}</div>`);
+  } else {
+    push(`<div class="card">✅ No missed slots in this range.</div>`);
+  }
 
   const recent=results.filter(r=>r.status==='submitted').slice(-6);
   if (recent.length){
@@ -440,7 +613,13 @@ function card(r,badge){
     <div class="muted">Due: ${when}</div><div class="muted">Status: ${r.status}${who}${sub?' · submitted at '+sub:''}</div>
     <div class="muted"><a target="_blank" href="${r.formUrl}">Open form</a> · <a target="_blank" href="${r.responsesUrl}">Responses sheet</a></div></div>`;
 }
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])).replace(/'/g,'&#39;'); }
+
+/* ======== Safe HTML escape (fixes apostrophes) ======== */
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, m => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'
+  }[m]));
+}
 </script>
 </body>
 </html>
